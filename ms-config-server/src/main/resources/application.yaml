@@ -2,7 +2,7 @@ spring:
   application:
     name: serverconfig
   profiles:
-    active: ${SPRING_PROFILE:prod}
+    active: ${SPRING_PROFILE:dev}
 
 # Configuración común para todos los perfiles
 management:

@@ -11,6 +11,16 @@ repositories {
     mavenCentral()
 }
 
+ext {
+    set("springCloudVersion", "2025.0.0")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
+    }
+}
+
 dependencies {
     // Lombok
     compileOnly("org.projectlombok:lombok:1.18.34")
@@ -19,16 +29,16 @@ dependencies {
     //Springboot
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    // Config Server
+    implementation("org.springframework.cloud:spring-cloud-starter-config")
 
     //Postgre
     implementation("org.postgresql:r2dbc-postgresql:1.0.5.RELEASE")
 
     //Security
     implementation("org.springframework.boot:spring-boot-starter-security")
-
-    //.env
-    implementation("me.paulschwarz:spring-dotenv:3.0.0")
-
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
