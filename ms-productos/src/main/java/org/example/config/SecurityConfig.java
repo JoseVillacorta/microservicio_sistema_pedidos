@@ -18,8 +18,8 @@ import java.util.List;
  * Esta clase es NECESARIA para que las peticiones OPTIONS (preflight de CORS)
  * no sean bloqueadas por Spring Security con un 403 Forbidden.
  */
-//@Configuration
-//@EnableWebFluxSecurity
+@Configuration
+@EnableWebFluxSecurity
 public class SecurityConfig {
 
     /**
@@ -42,7 +42,7 @@ public class SecurityConfig {
                         .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
                         // [B] PERMITIR RUTAS DE PRODUCTO: Acceso público al CRUD.
-                        .pathMatchers("/products**").permitAll()
+                        .pathMatchers("/products", "/products/**").permitAll()
 
                         // [C] CUALQUIER OTRA RUTA: Requerir autenticación.
                         .anyExchange().authenticated()
