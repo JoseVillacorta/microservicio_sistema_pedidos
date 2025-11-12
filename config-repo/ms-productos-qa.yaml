@@ -1,18 +1,19 @@
 spring:
   application:
-    name: qa_test
-
+    name: product_test
   r2dbc:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-
   main:
     web-application-type: reactive
-
 server:
-  port: 8080
-
+  port: 8083  # Cambia a 8083
 logging:
   level:
     org.springframework.r2dbc: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh
