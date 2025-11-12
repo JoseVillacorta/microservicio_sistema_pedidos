@@ -1,6 +1,6 @@
 spring:
   application:
-    name: product_test
+    name: ms-productos
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/db_productos_dev
     username: postgres
@@ -17,3 +17,9 @@ management:
     web:
       exposure:
         include: health,info,refresh
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      preferIpAddress: true

@@ -35,6 +35,7 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-config")
     implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
     implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     compileOnly("org.projectlombok:lombok")
 	runtimeOnly("org.postgresql:postgresql")
 	runtimeOnly("org.postgresql:r2dbc-postgresql")
