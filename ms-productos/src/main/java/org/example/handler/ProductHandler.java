@@ -76,6 +76,19 @@ public class ProductHandler {
                 .switchIfEmpty(ServerResponse.notFound().build());
     }
 
+    public Mono<ServerResponse> updateStock(ServerRequest request) {
+        Long id = Long.parseLong(request.pathVariable("id"));
+        return request.bodyToMono(Map.class)
+                .flatMap(body -> {
+                    Integer stock = (Integer) body.get("stock");
+                    return service.updateStock(id, stock);
+                })
+                .flatMap(producto -> ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .bodyValue(producto))
+                .switchIfEmpty(ServerResponse.notFound().build());
+    }
+
     public Mono<ServerResponse> getBajoStock(ServerRequest request){
         int minimo = Integer.parseInt(request.queryParam("minimo").orElse("5"));
         return ServerResponse.ok()

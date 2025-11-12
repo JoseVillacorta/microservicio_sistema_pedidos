@@ -42,7 +42,7 @@ public class SecurityConfig {
                         .pathMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
                         // [B] PERMITIR RUTAS DE PRODUCTO: Acceso público al CRUD.
-                        .pathMatchers("/products", "/products/**").permitAll()
+                        .pathMatchers("/api/**").permitAll()
 
                         // [C] CUALQUIER OTRA RUTA: Requerir autenticación.
                         .anyExchange().authenticated()

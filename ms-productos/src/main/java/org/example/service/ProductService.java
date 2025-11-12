@@ -79,6 +79,15 @@ public class ProductService {
                 });
     }
 
+    public Mono<Producto> updateStock(Long id, Integer newStock) {
+        return repository.findById(id)
+                .switchIfEmpty(Mono.error(new RuntimeException("Producto no encontrado")))
+                .flatMap(producto -> {
+                    producto.setStock(newStock);
+                    return repository.save(producto);
+                });
+    }
+
     public Mono<Void> delete(Long id) {
         return repository.deleteById(id);
     }
