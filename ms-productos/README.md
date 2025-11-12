@@ -1,6 +1,6 @@
 # MS Productos
 
-Microservicio de productos.
+Microservicio de productos reactivo.
 
 ## Dependencias
 - PostgreSQL con DB db_productos_dev/qa/prd.
@@ -11,13 +11,13 @@ Microservicio de productos.
 - Perfil: `--spring.profiles.active=dev`.
 
 ## Endpoints
-- GET /api/productos
-- GET /api/productos/{id}
-- POST /api/productos
-- PUT /api/productos/{id}
-- PUT /api/productos/{id}/stock
-- DELETE /api/productos/{id}
-- GET /api/productos/bajo-stock
+- GET /api/products
+- GET /api/products/{id}
+- POST /api/products
+- PUT /api/products/{id}
+- PUT /api/products/{id}/stock
+- DELETE /api/products/{id}
+- GET /api/products/bajo-stock
 
 ## Ejemplo POST producto
 ```json

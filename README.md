@@ -1,22 +1,23 @@
-# Sistema de Gestión de Pedidos
+# Sistema de Microservicios: Gestión de Pedidos
+
+Arquitectura completa con Spring Boot, WebFlux, R2DBC, PostgreSQL, Config Server, Eureka, Gateway.
 
 ## Instalación
 - Instalar Java 21, PostgreSQL, Git.
 - Clonar repo.
 
-## Configuración DB
-- Crear DBs: db_productos_dev/qa/prd, db_pedidos_dev/qa/prd.
-- Ejecutar scripts en database/.
+## Servicios
+- **ms-config-server**: Config Server (puerto 8888)
+- **registry-service**: Eureka Server (puerto 8761)
+- **gateway**: API Gateway (puerto 8080)
+- **ms-productos**: Productos reactivos (puerto 8081)
+- **ms-pedidos**: Pedidos reactivos (puerto 8082)
 
-## Ejecutar
-- ms-config-server: `./gradlew bootRun` (puerto 8888).
-- ms-productos: `./gradlew bootRun` (dev: 8081).
-- ms-pedidos: `./gradlew bootRun` (dev: 8082).
+## Inicio Rápido
+1. Crear DBs en PostgreSQL: db_productos_dev, db_pedidos_dev.
+2. Ejecutar scripts en database/.
+3. `./gradlew bootRun` en cada servicio (orden: config-server, registry, gateway, ms-productos, ms-pedidos).
+4. Acceder via Gateway: `http://localhost:8080/api/products`
 
-## Endpoints
-- Productos: GET/POST/PUT/DELETE /api/productos, GET /api/productos/bajo-stock.
-- Pedidos: GET/POST/PUT/DELETE /api/pedidos, PUT /api/pedidos/{id}/estado.
-
-## Ejemplos
-- Crear producto: POST /api/productos con JSON {nombre, precio, stock}.
-- Crear pedido: POST /api/pedidos con JSON {cliente, detalles: [{productoId, cantidad}]}.
+## Documentación
+Ver README en cada carpeta.

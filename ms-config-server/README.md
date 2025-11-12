@@ -8,4 +8,4 @@ Servidor de configuración centralizada.
 
 ## Configuración
 - Repo Git: `config-repo/`.
-- Perfiles: local (file://), qa/prd (Git remoto).
+- Perfiles: local/qa/prd.

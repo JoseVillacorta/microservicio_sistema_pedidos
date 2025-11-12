@@ -9,6 +9,8 @@ Repositorio Git para configuraciones centralizadas.
 - `ms-pedidos-dev.yml`: Config dev para ms-pedidos (DB db_pedidos_dev, puerto 8082).
 - `ms-pedidos-qa.yml`: Config QA (DB db_pedidos_qa, puerto 8084).
 - `ms-pedidos-prd.yml`: Config PRD (DB db_pedidos_prd, puerto 8086).
+- `registry-service.yaml`: Config para registry-service (puerto 8761).
+- `gateway-service.yaml`: Config para gateway (puerto 8080).
 
 ## Uso
 - Commitea cambios: `git add . && git commit -m "Update"`.

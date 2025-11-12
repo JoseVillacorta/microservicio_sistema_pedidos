@@ -1,6 +1,6 @@
 # MS Pedidos
 
-Microservicio de pedidos.
+Microservicio de pedidos reactivo.
 
 ## Dependencias
 - PostgreSQL con DB db_pedidos_dev/qa/prd.

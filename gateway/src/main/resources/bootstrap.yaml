@@ -13,4 +13,4 @@ spring:
       profile: dev
 
       # Etiqueta (branch) del repositorio Git a usar (usa el que definiste en el Server Config)
-      label: main 
+      label: main
