@@ -11,28 +11,21 @@ repositories {
     mavenCentral()
 }
 
-ext {
-    set("springCloudVersion", "2025.0.0")
-}
-
-dependencyManagement {
-    imports {
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}")
-    }
-}
+val springCloudVersion = "2025.0.0"
 
 dependencies {
     // Lombok
     compileOnly("org.projectlombok:lombok:1.18.34")
     annotationProcessor("org.projectlombok:lombok:1.18.34")
 
+    //SpringCloud
+    implementation("org.springframework.cloud:spring-cloud-starter-config")
+    implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
+
     //Springboot
     implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-
-    // Config Server
-    implementation("org.springframework.cloud:spring-cloud-starter-config")
 
     //Postgre
     implementation("org.postgresql:r2dbc-postgresql:1.0.5.RELEASE")
@@ -46,7 +39,11 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
 }
-
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
+    }
+}
 tasks.test {
     useJUnitPlatform()
 }

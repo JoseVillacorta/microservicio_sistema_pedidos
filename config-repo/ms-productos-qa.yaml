@@ -1,6 +1,6 @@
 spring:
   application:
-    name: product_test
+    name: qa_test
 
   r2dbc:
     url: ${DB_URL}

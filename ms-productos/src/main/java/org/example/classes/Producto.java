@@ -4,17 +4,19 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
+import java.time.LocalDateTime;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table("product")
-public class Product {
+@Table("productos")
+public class Producto {
     @Id
-    private int id;
-
-    private String name;
-    private String description;
-    private float price;
-    private int stock;
+    private Long id;
+    private String nombre;
+    private String descripcion;
+    private Double precio;
+    private Integer stock;
+    private Boolean activo;
+    private LocalDateTime fechaCreacion;
 }

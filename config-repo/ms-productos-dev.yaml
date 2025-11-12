@@ -1,22 +1,19 @@
 spring:
   application:
     name: product_test
-
   r2dbc:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-
+    url: r2dbc:postgresql://localhost:5432/db_productos_dev
+    username: postgres
+    password: admin
   main:
     web-application-type: reactive
-
 server:
-  port: 8080
-
+  port: 8081
 logging:
   level:
     org.springframework.r2dbc: DEBUG
-
-custom:
-  properties:
-    name: Profile Dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh
