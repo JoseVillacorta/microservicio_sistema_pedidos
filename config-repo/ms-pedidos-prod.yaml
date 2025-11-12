@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: pedidos_test
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/db_pedidos_dev
+    username: postgres
+    password: admin
+  main:
+    web-application-type: reactive
+server:
+  port: 8082
+ms-productos:
+  url: http://localhost:8081
+logging:
+  level:
+    org.springframework.r2dbc: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,refresh
