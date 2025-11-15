@@ -1,14 +1,25 @@
 spring:
   application:
-    name: ms-productos
+    name: ms-productos-v2
   r2dbc:
     url: r2dbc:postgresql://localhost:5432/db_productos_dev
     username: postgres
     password: admin
   main:
     web-application-type: reactive
+  kafka:  
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: product-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
 server:
-  port: 8081
+  port: 8083
 logging:
   level:
     org.springframework.r2dbc: DEBUG
