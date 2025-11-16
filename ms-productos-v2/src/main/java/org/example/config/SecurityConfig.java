@@ -43,6 +43,7 @@ public class SecurityConfig {
 
                         // [B] PERMITIR RUTAS DE PRODUCTO: Acceso público al CRUD.
                         .pathMatchers("/api/**").permitAll()
+                        .pathMatchers("/actuator/**").permitAll()
 
                         // [C] CUALQUIER OTRA RUTA: Requerir autenticación.
                         .anyExchange().authenticated()

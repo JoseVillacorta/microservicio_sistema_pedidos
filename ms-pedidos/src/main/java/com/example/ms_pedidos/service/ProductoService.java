@@ -11,7 +11,7 @@ public class ProductoService {
     private final WebClient webClient;
 
     public ProductoService(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.baseUrl("http://localhost:8081").build();
+        this.webClient = webClientBuilder.baseUrl("http://localhost:8083").build();
     }
 
     public Mono<Map<String, Object>> obtenerProducto(Long id) {

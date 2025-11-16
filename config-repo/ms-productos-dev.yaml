@@ -27,7 +27,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,refresh
+        include: health,info,metrics,prometheus,refresh
 eureka:
   client:
     service-url:

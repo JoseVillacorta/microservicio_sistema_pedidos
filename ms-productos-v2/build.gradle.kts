@@ -37,6 +37,9 @@ dependencies {
 
     //Kafka
     implementation("org.springframework.kafka:spring-kafka")
+    implementation("io.micrometer:micrometer-registry-prometheus")
+    implementation("io.opentelemetry:opentelemetry-exporter-otlp:1.35.0")
+    implementation("io.micrometer:micrometer-tracing-bridge-otel")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))

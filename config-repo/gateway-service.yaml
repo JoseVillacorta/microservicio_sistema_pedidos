@@ -23,3 +23,8 @@ spring:
               uri: lb://ms-pedidos
               predicates:
                 - Path=/api/pedidos/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,refresh
