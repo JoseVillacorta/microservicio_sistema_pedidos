@@ -2,6 +2,7 @@ plugins {
     id("java")
     id("org.springframework.boot") version "3.5.7"
     id("io.spring.dependency-management") version "1.1.7"
+    id("jacoco")
 }
 
 group = "org.example"
@@ -32,7 +33,6 @@ dependencies {
 
     //Security
     implementation("org.springframework.boot:spring-boot-starter-security")
-    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
 
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 
@@ -43,6 +43,7 @@ dependencies {
     implementation("io.micrometer:micrometer-tracing-bridge-otel")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.projectreactor:reactor-test")
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
@@ -55,4 +56,14 @@ dependencyManagement {
 }
 tasks.test {
     useJUnitPlatform()
+    finalizedBy("jacocoTestReport")
+}
+
+tasks.named("jacocoTestReport", JacocoReport::class) {
+    dependsOn(tasks.test)
+    reports {
+        xml.required = true
+        csv.required = false
+        html.required = true
+    }
 }

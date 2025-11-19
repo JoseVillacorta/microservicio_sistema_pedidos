@@ -8,7 +8,7 @@ spring:
   main:
     web-application-type: reactive
 server:
-  port: 8083  # Cambia a 8083
+  port: 8087  
 logging:
   level:
     org.springframework.r2dbc: DEBUG
@@ -16,4 +16,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: health,info,refresh
+        include: health,info,metrics,prometheus,refresh
