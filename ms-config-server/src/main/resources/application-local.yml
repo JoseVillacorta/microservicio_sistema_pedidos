@@ -14,7 +14,6 @@ spring:
           search-paths:
             - '{application}'
             - '{application}/{profile}'
-            - '{application}-{profile}.yml'
 
           # Forzar actualización en cada petición (útil en desarrollo)
           force-pull: true

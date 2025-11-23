@@ -3,6 +3,7 @@ plugins {
     id("org.springframework.boot") version "3.5.7"
     id("io.spring.dependency-management") version "1.1.7"
     id("jacoco")
+    id("org.sonarqube") version "4.4.1.3373"
 }
 
 group = "org.example"
@@ -47,13 +48,14 @@ dependencies {
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-
 }
+
 dependencyManagement {
     imports {
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:$springCloudVersion")
     }
 }
+
 tasks.test {
     useJUnitPlatform()
     finalizedBy("jacocoTestReport")
@@ -67,3 +69,15 @@ tasks.named("jacocoTestReport", JacocoReport::class) {
         html.required = true
     }
 }
+
+sonarqube {
+    properties {
+        property("sonar.projectKey", "josevillacorta-msproductos")
+        property("sonar.organization", "JoseVillacorta")
+        property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.sources", listOf("src/main/java"))
+        property("sonar.tests", listOf("src/test/java"))
+    }
+}
+
+
