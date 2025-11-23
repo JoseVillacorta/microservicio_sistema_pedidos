@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: MS Pedidos API
+  version: 1.0.0
+  description: API para gestionar pedidos en el sistema
+
+servers:
+  - url: http://localhost:8080
+    description: Servidor local
+
+paths:
+  /pedidos:
+    get:
+      summary: Obtener todos los pedidos
+      responses:
+        '200':
+          description: Lista de pedidos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pedido'
+    post:
+      summary: Crear un nuevo pedido
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PedidoInput'
+      responses:
+        '201':
+          description: Pedido creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
+
+components:
+  schemas:
+    Pedido:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        cliente:
+          type: string
+          example: "Juan Perez"
+        total:
+          type: number
+          format: float
+          example: 250.5
+    PedidoInput:
+      type: object
+      properties:
+        cliente:
+          type: string
+          example: "Juan Perez"
+        total:
+          type: number
+          format: float
+          example: 250.5
+      required:
+        - cliente
+        - total
